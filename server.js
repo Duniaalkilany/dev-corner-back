@@ -2,7 +2,7 @@
 require ("dotenv").config()
 const express = require("express");
 const app = express();
-
+const cors = require ('cors')
 const helmet = require("helmet");
 const morgan = require("morgan");
 const multer = require("multer");
@@ -49,7 +49,7 @@ let sequelize = new Sequelize(process.env.DATABASE_URL,sequelizeOptions);
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
-
+app.use(cors())
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "public/images");
