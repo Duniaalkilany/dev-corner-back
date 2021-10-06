@@ -8,7 +8,7 @@ const {
 // const sequelize = new Sequelize('postgres://localhost:5432/dunia')
 const sequelize = new Sequelize(process.env.DATABASE_URL)
 
-const PostSchema = sequelize.define('proj-post', {
+const PostSchema = sequelize.define('post', {
   userId: {
     type: DataTypes.STRING,
     allowNull: false
