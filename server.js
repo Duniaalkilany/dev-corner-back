@@ -35,8 +35,16 @@ const router = express.Router();
 
 
 // const sequelize = new Sequelize('postgres://localhost:5432/dunia')
-const sequelize = new Sequelize(process.env.DATABASE_URL)
-
+// const sequelize = new Sequelize(process.env.DATABASE_URL)
+let sequelizeOptions = {
+  dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      }
+    }
+};
+let sequelize = new Sequelize(process.env.DATABASE_URL,sequelizeOptions);
 //middleware
 app.use(express.json());
 app.use(helmet());
